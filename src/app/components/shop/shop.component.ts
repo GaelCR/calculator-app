@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { take } from 'rxjs/operators';
 import { CalculatorHttpRepositoryService } from '../../core/http/calculator-http-repository.service';
@@ -9,7 +9,7 @@ import { ICombination } from '../../core/models/search.model';
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss']
 })
-export class ShopComponent implements OnInit {
+export class ShopComponent {
   combination: ICombination;
   montantFC: FormControl = new FormControl(null, Validators.required);
   shopId = 5;
@@ -17,9 +17,6 @@ export class ShopComponent implements OnInit {
   constructor(
     private calculatorRepositoryService: CalculatorHttpRepositoryService
   ) {
-  }
-
-  ngOnInit() {
   }
 
   chooseCeil(): void {

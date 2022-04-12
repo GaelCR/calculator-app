@@ -9,6 +9,9 @@
         <input matInput placeholder="Montant désiré" [formControl]="montantFC" required>
       </mat-form-field>
 
+      <button mat-raised-button color="primary" *ngIf="combination?.floor && combination?.floor?.value !== combination?.equal?.value" (click)="chooseFloor()">Montant précédent</button>
+      <button mat-raised-button color="primary" *ngIf="combination?.ceil && combination?.floor?.value !== combination?.equal?.value" (click)="chooseCeil()">Montant suivant</button>
+
       <button mat-button color="primary" [disabled]="!montantFC.value" (click)="validate()">Valider</button>
     </div>
 
@@ -25,18 +28,9 @@
           </mat-card>
         </div>
       </ng-container>
-      <ng-container *ngIf="combination?.floor && !combination?.equal">
-        <span>Votre montant demandé n'est pas disponible. Le premier montant inférieur disponible est de {{ combination.floor.value }} €.</span>
-
-        <button mat-raised-button color="primary" (click)="chooseFloor()">Choisir {{ combination.floor.value}} €</button>
-      </ng-container>
-      <ng-container *ngIf="combination?.ceil && !combination?.equal">
-        <span>Votre montant demandé n'est pas disponible. Le premier montant supérieur disponible est de {{ combination.ceil.value }} €.</span>
-
-        <button mat-raised-button color="primary" (click)="chooseCeil()">Choisir {{ combination.ceil.value}} €</button>
+      <ng-container *ngIf="combination?.floor && combination?.ceil && !combination?.equal">
+        <span>Votre montant demandé n'est pas disponible. Choisissez un autre montant à l'aide des boutons ci-dessus.</span>
       </ng-container>
     </div>
   </mat-card-content>
-
-  <mat-card-actions></mat-card-actions>
 </mat-card>

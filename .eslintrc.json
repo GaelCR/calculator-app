@@ -1,0 +1,54 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "import",
+    "prettier",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "default-case": ["warn"],
+    "import/prefer-default-export": "off",
+    "array-bracket-spacing": ["error", "always"],
+    "comma-style": ["error","last"],
+    "curly": ["error", "all" ],
+    "eqeqeq": [ "error", "always"],
+    "max-len": ["error", 140],
+    "func-call-spacing": [ "error", "never" ],
+    "indent": [ "error", "tab", { "SwitchCase": 1 }],
+    "object-curly-spacing": ["error", "always"],
+    "no-unused-vars": "off",
+    "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
+    "no-tabs": ["error", { "allowIndentationTabs": true }],
+    "no-var": ["error"],
+    "prefer-const": ["error"],
+    "quotes": ["error", "single"]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    },
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "ts": "never"
+      }
+    ]
+  }
+}

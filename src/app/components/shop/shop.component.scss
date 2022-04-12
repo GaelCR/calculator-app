@@ -1,0 +1,45 @@
+:host {
+  .mat-card {
+    &-header {
+      margin-bottom: 20px;
+    }
+  }
+
+  .main-card {
+    margin: 20px;
+
+    &-content {
+      .response {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+
+        .title {
+          margin-bottom: 15px;
+        }
+
+        .card-list {
+          display: flex;
+          flex-direction: row;
+
+          .combination-card {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &.not-first {
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+
+      button {
+        max-width: 120px;
+        margin: 10px 0 20px 10px;
+      }
+    }
+  }
+}

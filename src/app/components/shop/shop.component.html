@@ -1,0 +1,42 @@
+<mat-card class="main-card">
+  <mat-card-header>
+    <h2>WedooStore</h2>
+  </mat-card-header>
+
+  <mat-card-content class="main-card-content">
+    <div class="ask">
+      <mat-form-field>
+        <input matInput placeholder="Montant désiré" [formControl]="montantFC" required>
+      </mat-form-field>
+
+      <button mat-button color="primary" [disabled]="!montantFC.value" (click)="validate()">Valider</button>
+    </div>
+
+    <div class="response">
+      <ng-container *ngIf="combination?.equal">
+        <span class="title">Votre montant de {{ combination.equal.value }}€ est composé
+          <span *ngIf="combination.equal.cards.length === 1">de la carte suivante :</span>
+          <span *ngIf="combination.equal.cards.length >= 2">des cartes suivantes :</span>
+        </span>
+
+        <div class="card-list">
+          <mat-card class="combination-card" [ngClass]="{ 'not-first': !isFirst }" *ngFor="let card of combination.equal.cards; index as i; first as isFirst">
+            <mat-card-content>{{ card }} €</mat-card-content>
+          </mat-card>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="combination?.floor && !combination?.equal">
+        <span>Votre montant demandé n'est pas disponible. Le premier montant inférieur disponible est de {{ combination.floor.value }} €.</span>
+
+        <button mat-raised-button color="primary" (click)="chooseFloor()">Choisir {{ combination.floor.value}} €</button>
+      </ng-container>
+      <ng-container *ngIf="combination?.ceil && !combination?.equal">
+        <span>Votre montant demandé n'est pas disponible. Le premier montant supérieur disponible est de {{ combination.ceil.value }} €.</span>
+
+        <button mat-raised-button color="primary" (click)="chooseCeil()">Choisir {{ combination.ceil.value}} €</button>
+      </ng-container>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions></mat-card-actions>
+</mat-card>
